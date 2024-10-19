@@ -67,7 +67,7 @@ class PendingTasksScreenState extends State<PendingTasksScreen> {
           return ListTile(
             title: Text(_pendingTasks[index].title),
             subtitle: Text(
-                'Due: ${_pendingTasks[index].dueDate.toLocal().toString().split(' ')[0]}'),
+                'Due: ${_pendingTasks[index].dueDate.toLocal().toString().split(' ')[0]}\n${_pendingTasks[index].description}'),
             trailing: Checkbox(
               value: _pendingTasks[index].isCompleted,
               onChanged: (bool? value) {

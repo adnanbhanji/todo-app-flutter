@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false,
       home: PendingTasksScreen(
         pendingTasks: taskController.pendingTasks,
         completedTasks: taskController.completedTasks,

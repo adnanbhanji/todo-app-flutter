@@ -16,8 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const PendingTasksScreen(
-          pendingTasks: []), // Changed null to an empty list
+      home: const PendingTasksScreen(pendingTasks: []),
     );
   }
 }

@@ -10,7 +10,7 @@ class PendingTasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Pending Tasks')),
+      appBar: AppBar(title: const Text('Pending Tasks')),
       body: ListView.builder(
         itemCount: pendingTasks.length,
         itemBuilder: (context, index) {
@@ -31,7 +31,7 @@ class PendingTasksScreen extends StatelessWidget {
         onPressed: () {
           // Open add task dialog
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

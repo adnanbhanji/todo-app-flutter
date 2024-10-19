@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/task.dart';
+import 'add_task_dialog.dart';
 
 class PendingTasksScreen extends StatelessWidget {
   final List<Task> pendingTasks;
@@ -29,9 +30,14 @@ class PendingTasksScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Open add task dialog
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return const AddTaskDialog(); // Added 'const' here
+            },
+          );
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add), // Added 'const' here
       ),
     );
   }

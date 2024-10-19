@@ -34,6 +34,18 @@ class AddTaskDialogState extends State<AddTaskDialog> {
     String title = _titleController.text;
     String description = _descriptionController.text;
 
+    // Check if the title is empty
+    if (title.isEmpty) {
+      // Show an error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please add a title.'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      return; // Exit the method if the title is empty
+    }
+
     // Create a new Task object using the user input
     Task newTask = Task(
       title: title,

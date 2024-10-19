@@ -17,7 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: PendingTasksScreen(pendingTasks: taskController.pendingTasks),
+      home: PendingTasksScreen(
+        pendingTasks: taskController.pendingTasks,
+        completedTasks:
+            taskController.completedTasks, // Added completedTasks parameter
+      ),
     );
   }
 }

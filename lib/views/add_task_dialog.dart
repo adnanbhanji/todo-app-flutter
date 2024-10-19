@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_flutter/models/task.dart';
 
 class AddTaskDialog extends StatefulWidget {
-  const AddTaskDialog({Key? key}) : super(key: key);
+  final Function(Task) onAddTask;
+
+  const AddTaskDialog({Key? key, required this.onAddTask}) : super(key: key);
+
   @override
   AddTaskDialogState createState() => AddTaskDialogState();
 }
@@ -25,6 +29,24 @@ class AddTaskDialogState extends State<AddTaskDialog> {
     }
   }
 
+  void _submitTask() {
+    // Retrieve the title and description from the text controllers
+    String title = _titleController.text;
+    String description = _descriptionController.text;
+
+    // Create a new Task object using the user input
+    Task newTask = Task(
+      title: title,
+      description: description,
+      dueDate:
+          _selectedDate ?? DateTime.now(), // Use selected date or current date
+      isCompleted: false,
+    );
+
+    widget.onAddTask(newTask); // Call the callback function
+    Navigator.of(context).pop(); // Close the dialog
+  }
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -34,8 +56,7 @@ class AddTaskDialogState extends State<AddTaskDialog> {
         children: [
           TextField(
             controller: _titleController,
-            decoration: const InputDecoration(
-                labelText: 'Task Title'), // Added 'const' here
+            decoration: const InputDecoration(labelText: 'Task Title'),
           ),
           TextField(
             controller: _descriptionController,
@@ -57,12 +78,7 @@ class AddTaskDialogState extends State<AddTaskDialog> {
           child: const Text('Cancel'),
         ),
         TextButton(
-          onPressed: () {
-            if (_titleController.text.isNotEmpty && _selectedDate != null) {
-              // Add new task
-            }
-            Navigator.of(context).pop();
-          },
+          onPressed: _submitTask,
           child: const Text('Add'),
         ),
       ],

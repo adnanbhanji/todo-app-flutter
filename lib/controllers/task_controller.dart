@@ -1,4 +1,22 @@
-// TODO: Here we'll work on the logic for managing the tasks.
-// in the views, we already added the controller functions for the logic, 
-// but nothing works, so now we add the actual logic 
-// for managing tasks (add, complete, and get tasks)
+import '../models/task.dart';
+
+class TaskController {
+  final List<Task> _tasks = [];
+
+  List<Task> get pendingTasks =>
+      _tasks.where((task) => !task.isCompleted).toList();
+  List<Task> get completedTasks =>
+      _tasks.where((task) => task.isCompleted).toList();
+
+  void addTask(Task task) {
+    _tasks.add(task);
+  }
+
+  void completeTask(Task task) {
+    task.isCompleted = true;
+  }
+
+  void uncompleteTask(Task task) {
+    task.isCompleted = false;
+  }
+}

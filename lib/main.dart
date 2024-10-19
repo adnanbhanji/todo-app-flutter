@@ -7,7 +7,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key); // Added key parameter
+  MyApp({Key? key}) : super(key: key);
   final TaskController taskController = TaskController();
 
   @override
@@ -19,8 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: PendingTasksScreen(
         pendingTasks: taskController.pendingTasks,
-        completedTasks:
-            taskController.completedTasks, // Added completedTasks parameter
+        completedTasks: taskController.completedTasks,
       ),
     );
   }

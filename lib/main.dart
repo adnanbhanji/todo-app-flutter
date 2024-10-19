@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'views/pending_tasks.dart';
-import 'models/task.dart';
+import 'controllers/task_controller.dart';
 
 void main() {
-  runApp(const MyApp()); // Added 'const' keyword
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key); // Added key parameter
+  MyApp({Key? key}) : super(key: key); // Added key parameter
+  final TaskController taskController = TaskController();
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const PendingTasksScreen(pendingTasks: []),
+      home: PendingTasksScreen(pendingTasks: taskController.pendingTasks),
     );
   }
 }
